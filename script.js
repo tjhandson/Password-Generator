@@ -112,85 +112,92 @@ let selectedCharacters = [];
 let numberOfOptionsSelected = 0;
 let NameOfOptionsSelected = [];
 
-
-function getPasswordOptions() {
-  // Function to prompt user for password options
-  // * Present a series of prompts for password criteria
-  // * Character types
-
+function getPasswordLength() {
   // * Length of password & restrict to At least 10 characters but no more than 64.
   for (let i = 0; i < 1; i++) {
-    let passwordLength = parseInt(prompt("Enter password length between 10 and 64 in numbers", "10"), 10);
-
-    if (passwordLength < 10) {
+    let UserType = parseInt(prompt("Enter password length between 10 and 64 in numbers", "10"), 10);
+    // Password length too short
+    if (UserType < 10) {
       alert("The entry is too low. A reminder Password must be between 10 and 64 (written in numbers) Please Click the button again");
       break;
     }
-    else if (passwordLength > 64) {
+    // Password length too long
+    else if (UserType > 64) {
       alert("The entry is too high. A reminder Password must be between 10 and 64 (written in numbers) Please Click the button again");
       break;
     }
-    else {
-
-
-      // * Confrim - Lowercase
-      let passwordLowercse = confirm("Want to include LowerCase");
-      if (passwordLowercse === true) {
-        selectedCharacters.push(...lowerCasedCharacters);
-        console.log(passwordLowercse);
-        console.log(selectedCharacters);
-        numberOfOptionsSelected++;
-        NameOfOptionsSelected.push("Lowercase");
-      };
-      // * Confrim - Uppercase
-      let passwordUppercse = confirm("Want to include UpperCase");
-      if (passwordUppercse === true) {
-        selectedCharacters.push(...upperCasedCharacters);
-        numberOfOptionsSelected++;
-        NameOfOptionsSelected.push("Uppercase");
-      };
-      // * Confrim - Numeric
-      let passwordNumeric = confirm("Want to include Numeric");
-      if (passwordNumeric === true) {
-        selectedCharacters.push(...numericCharacters);
-        numberOfOptionsSelected++;
-        NameOfOptionsSelected.push("Numeric");
-
-      };
-      // * Confrim - Special characters ($@%&*, etc)
-      let passwordSpecial = confirm("Want to include Special characters ($@%&*, etc)");
-      if (passwordSpecial === true) {
-        selectedCharacters.push(...specialCharacters);
-        numberOfOptionsSelected++;
-        NameOfOptionsSelected.push("Special characters");
-      };
-      if (numberOfOptionsSelected < 1) {
-        alert("You have Selected No character types. Please Click the button again");
-        break;
-
-      }
-      let summaryText =
-        "You have Selected Password parameters of\n" +
-        "Password length: " + passwordLength + "\n" +
-        "Containing: \n" + NameOfOptionsSelected.join('\n');
-      console.log(selectedCharacters)
-
-      alert(summaryText)
-      return passwordLength, selectedCharacters
+    // Password is not a Number
+    else if (Number.isNaN(UserType)) {
+      alert("You Have typed a non number character. A reminder Password must be between 10 and 64 (written in numbers) Please Click the button again");
+      break;
     }
+    else {
+      return passwordLength = UserType;
+    }
+  }
+}
 
+function getPasswordOptions() {
+  for (let i = 0; i < 1; i++) {
+    // * Confrim - Lowercase
+    let passwordLowercse = confirm("Want to include LowerCase");
+    if (passwordLowercse === true) {
+      selectedCharacters.push(...lowerCasedCharacters);
+      numberOfOptionsSelected++;
+      NameOfOptionsSelected.push("Lowercase");
+    };
+    // * Confrim - Uppercase
+    let passwordUppercse = confirm("Want to include UpperCase");
+    if (passwordUppercse === true) {
+      selectedCharacters.push(...upperCasedCharacters);
+      numberOfOptionsSelected++;
+      NameOfOptionsSelected.push("Uppercase");
+    };
+    // * Confrim - Numeric
+    let passwordNumeric = confirm("Want to include Numeric");
+    if (passwordNumeric === true) {
+      selectedCharacters.push(...numericCharacters);
+      numberOfOptionsSelected++;
+      NameOfOptionsSelected.push("Numeric");
+
+    };
+    // * Confrim - Special characters ($@%&*, etc)
+    let passwordSpecial = confirm("Want to include Special characters ($@%&*, etc)");
+    if (passwordSpecial === true) {
+      selectedCharacters.push(...specialCharacters);
+      numberOfOptionsSelected++;
+      NameOfOptionsSelected.push("Special characters");
+    };
+    // * Not Selected Any character Types
+    if (numberOfOptionsSelected < 1) {
+      alert("You have Selected No character types. Please Click the button again");
+      break;
+
+    }
+    let summaryText =
+      "You have Selected Password parameters of\n" +
+      "Password length: " + passwordLength + "\n" +
+      "Containing: \n" + NameOfOptionsSelected.join('\n');
+    console.log(selectedCharacters)
+
+    alert(summaryText)
+    return selectedCharacters;
   }
 
 }
 
-console.log(selectedCharacters)
 // Function for getting a random element from an array
-function getRandom(arr) {
 
+function getRandom(arr) {
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
 }
+
 
 // Function to generate password with user input
 function generatePassword() {
+
+
 }
 
 
@@ -206,4 +213,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', getPasswordOptions);
+generateBtn.addEventListener('click', writePassword);
