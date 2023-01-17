@@ -3,6 +3,7 @@
 ## Description 
 
 https://tjhandson.github.io/Password-Generator/
+![alt text](./assets/images/password-generator-page.png)
 
 # Installation
 
@@ -34,7 +35,7 @@ Clone project
 git clone git@github.com:tjhandson/Password-Generator.git
 
 Once downloaded the follow assets should be available within this folder:
-![alt text]()
+![alt text](./assets/images/password-generator-content.png)
 
 
 ## Credits
