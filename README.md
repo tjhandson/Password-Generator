@@ -1,6 +1,15 @@
 # Password-Generator
 
 ## Description 
+This Password Generator Project for Bootcamp course with EDx using Bootstrap
+This allows the user clicks the "Generate Password" button will display a series of prompts to the user. 
+
+The user can select the length of the password between 10 and 64 characters and can choose characters of uppercase, lowercase, numbers or symbols.
+
+Please Note that this project was never designed or meant to be cryptographically secure.
+
+And will return a randomised response within the wes page.
+
 
 https://tjhandson.github.io/Password-Generator/
 ![alt text](./assets/images/password-generator-page.png)
